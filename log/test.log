@@ -1,0 +1,388 @@
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "order_items"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (524.7ms)[0m  [1m[35mCREATE TABLE "order_items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantity" integer, "order_id" integer, "product_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (530.5ms)[0m  [1m[35mCREATE  INDEX "index_order_items_on_order_id" ON "order_items" ("order_id")[0m
+  [1m[35m (452.2ms)[0m  [1m[35mCREATE  INDEX "index_order_items_on_product_id" ON "order_items" ("product_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders"[0m
+  [1m[35m (501.8ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "warehouse_id" integer, "customer_name" varchar, "uuid" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (513.6ms)[0m  [1m[35mCREATE  INDEX "index_orders_on_warehouse_id" ON "orders" ("warehouse_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "products"[0m
+  [1m[35m (512.9ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "sku" varchar, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (532.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_products_on_sku" ON "products" ("sku")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "stocks"[0m
+  [1m[35m (503.4ms)[0m  [1m[35mCREATE TABLE "stocks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "count" integer, "product_id" integer, "warehouse_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (452.7ms)[0m  [1m[35mCREATE  INDEX "index_stocks_on_product_id" ON "stocks" ("product_id")[0m
+  [1m[35m (512.3ms)[0m  [1m[35mCREATE  INDEX "index_stocks_on_warehouse_id" ON "stocks" ("warehouse_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "warehouses"[0m
+  [1m[35m (714.0ms)[0m  [1m[35mCREATE TABLE "warehouses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "street" varchar, "city" varchar, "province" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (963.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (315.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200208075453)[0m
+  [1m[35m (330.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200208031909),
+(20200208073412),
+(20200208061403),
+(20200208054845);
+
+[0m
+  [1m[35m (435.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2020-02-15 08:53:38.063871"], ["updated_at", "2020-02-15 08:53:38.063871"]]
+  [1m[35m (412.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" ORDER BY "orders"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" ORDER BY "warehouses"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" ORDER BY "products"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" ORDER BY "orders"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mWarehouse Load (0.0ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" ORDER BY "warehouses"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" ORDER BY "products"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" ORDER BY "orders"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mWarehouse Load (0.0ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" ORDER BY "warehouses"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.2ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-15 08:53:38.673836"], ["updated_at", "2020-02-15 08:53:38.673836"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mOrder Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "orders" WHERE "orders"."uuid" = ? LIMIT ?[0m  [["uuid", "fb78f602-0016-4837-9e0e-8892f439c404"], ["LIMIT", 1]]
+  [1m[36mOrder Create (0.1ms)[0m  [1m[32mINSERT INTO "orders" ("warehouse_id", "customer_name", "uuid", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["warehouse_id", 1], ["customer_name", "MyString"], ["uuid", "fb78f602-0016-4837-9e0e-8892f439c404"], ["created_at", "2020-02-15 08:53:38.676573"], ["updated_at", "2020-02-15 08:53:38.676573"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" ORDER BY "products"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "1444"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "1444"], ["name", "OnePlus One"], ["created_at", "2020-02-15 08:53:38.678827"], ["updated_at", "2020-02-15 08:53:38.678827"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mOrderItem Create (0.1ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "order_id", "product_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["order_id", 1], ["product_id", 1], ["created_at", "2020-02-15 08:53:38.679766"], ["updated_at", "2020-02-15 08:53:38.679766"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOrder Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" ORDER BY "orders"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mWarehouse Load (0.0ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" ORDER BY "warehouses"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-15 08:53:38.682970"], ["updated_at", "2020-02-15 08:53:38.682970"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mOrder Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "orders" WHERE "orders"."uuid" = ? LIMIT ?[0m  [["uuid", "a5bc02ea-ef81-426e-a677-c9eb45339264"], ["LIMIT", 1]]
+  [1m[36mOrder Create (0.1ms)[0m  [1m[32mINSERT INTO "orders" ("warehouse_id", "customer_name", "uuid", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["warehouse_id", 1], ["customer_name", "MyString"], ["uuid", "a5bc02ea-ef81-426e-a677-c9eb45339264"], ["created_at", "2020-02-15 08:53:38.684217"], ["updated_at", "2020-02-15 08:53:38.684217"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" ORDER BY "products"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "1139"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "1139"], ["name", "Huawei P20"], ["created_at", "2020-02-15 08:53:38.688247"], ["updated_at", "2020-02-15 08:53:38.688247"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mOrderItem Create (0.1ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "order_id", "product_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["order_id", 1], ["product_id", 1], ["created_at", "2020-02-15 08:53:38.691539"], ["updated_at", "2020-02-15 08:53:38.691539"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" ORDER BY "warehouses"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mOrder Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "orders" WHERE "orders"."uuid" = ? LIMIT ?[0m  [["uuid", "86f18359-ae92-4b06-adb3-a71fa93dfff5"], ["LIMIT", 1]]
+  [1m[36mOrder Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "orders" WHERE "orders"."uuid" = ? LIMIT ?[0m  [["uuid", "09b981f0-3f2b-445e-98cf-21890a9a008b"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWarehouse Load (0.0ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" ORDER BY "warehouses"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-15 08:53:38.699829"], ["updated_at", "2020-02-15 08:53:38.699829"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mOrder Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "orders" WHERE "orders"."uuid" = ? LIMIT ?[0m  [["uuid", "c136b7a3-892d-45be-b0e9-871b3f40cca2"], ["LIMIT", 1]]
+  [1m[36mOrder Create (0.2ms)[0m  [1m[32mINSERT INTO "orders" ("warehouse_id", "customer_name", "uuid", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["warehouse_id", 1], ["customer_name", "MyString"], ["uuid", "c136b7a3-892d-45be-b0e9-871b3f40cca2"], ["created_at", "2020-02-15 08:53:38.701349"], ["updated_at", "2020-02-15 08:53:38.701349"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" ORDER BY "warehouses"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.2ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-15 08:53:38.709130"], ["updated_at", "2020-02-15 08:53:38.709130"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mOrder Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "orders" WHERE "orders"."uuid" = ? LIMIT ?[0m  [["uuid", "8d25e481-29a7-45cf-9b55-c993c6273d8d"], ["LIMIT", 1]]
+  [1m[36mOrder Create (0.1ms)[0m  [1m[32mINSERT INTO "orders" ("warehouse_id", "customer_name", "uuid", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["warehouse_id", 1], ["customer_name", "MyString"], ["uuid", "8d25e481-29a7-45cf-9b55-c993c6273d8d"], ["created_at", "2020-02-15 08:53:38.710935"], ["updated_at", "2020-02-15 08:53:38.710935"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" ORDER BY "warehouses"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-15 08:53:38.713821"], ["updated_at", "2020-02-15 08:53:38.713821"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mOrder Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "orders" WHERE "orders"."uuid" = ? LIMIT ?[0m  [["uuid", "db0ed8ce-8d76-4039-8957-497b5a78ffbd"], ["LIMIT", 1]]
+  [1m[36mOrder Create (0.1ms)[0m  [1m[32mINSERT INTO "orders" ("warehouse_id", "customer_name", "uuid", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["warehouse_id", 1], ["customer_name", "MyString"], ["uuid", "db0ed8ce-8d76-4039-8957-497b5a78ffbd"], ["created_at", "2020-02-15 08:53:38.715301"], ["updated_at", "2020-02-15 08:53:38.715301"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" ORDER BY "warehouses"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mOrder Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "orders" WHERE "orders"."uuid" = ? LIMIT ?[0m  [["uuid", "288a3766-1796-44d6-b7e5-9d383c9c0ce9"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "4183"], ["LIMIT", 1]]
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "4183"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", ""], ["LIMIT", 1]]
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."sku" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" ORDER BY "products"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "3917"], ["name", "OnePlus 3"], ["created_at", "2020-02-15 08:53:38.733116"], ["updated_at", "2020-02-15 08:53:38.733116"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "3917"], ["LIMIT", 1]]
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "3917"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "2715"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "2715"], ["name", "Huawei P20 Pro"], ["created_at", "2020-02-15 08:53:38.738359"], ["updated_at", "2020-02-15 08:53:38.738359"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "1169"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "1169"], ["name", "Huawei Mate 20"], ["created_at", "2020-02-15 08:53:38.741754"], ["updated_at", "2020-02-15 08:53:38.741754"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "4648"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "4648"], ["name", "Google Pixel XL"], ["created_at", "2020-02-15 08:53:38.744177"], ["updated_at", "2020-02-15 08:53:38.744177"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "4455"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "4455"], ["name", "Xiaomi Pocophone F1"], ["created_at", "2020-02-15 08:53:38.746482"], ["updated_at", "2020-02-15 08:53:38.746482"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" ORDER BY "products"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" ORDER BY "warehouses"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" ORDER BY "products"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mWarehouse Load (0.0ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" ORDER BY "warehouses"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" ORDER BY "products"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "2069"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "2069"], ["name", "iPhone 3G"], ["created_at", "2020-02-15 08:53:38.761863"], ["updated_at", "2020-02-15 08:53:38.761863"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Load (0.0ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" ORDER BY "warehouses"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-15 08:53:38.763092"], ["updated_at", "2020-02-15 08:53:38.763092"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStock Create (0.1ms)[0m  [1m[32mINSERT INTO "stocks" ("count", "product_id", "warehouse_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["count", 1], ["product_id", 1], ["warehouse_id", 1], ["created_at", "2020-02-15 08:53:38.764000"], ["updated_at", "2020-02-15 08:53:38.764000"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" ORDER BY "products"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "3075"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "3075"], ["name", "Samsung Galaxy S3 Mini"], ["created_at", "2020-02-15 08:53:38.767215"], ["updated_at", "2020-02-15 08:53:38.767215"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Load (0.0ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" ORDER BY "warehouses"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-15 08:53:38.768483"], ["updated_at", "2020-02-15 08:53:38.768483"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStock Create (0.1ms)[0m  [1m[32mINSERT INTO "stocks" ("count", "product_id", "warehouse_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["count", 1], ["product_id", 1], ["warehouse_id", 1], ["created_at", "2020-02-15 08:53:38.769362"], ["updated_at", "2020-02-15 08:53:38.769362"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-15 08:53:38.778359"], ["updated_at", "2020-02-15 08:53:38.778359"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-15 08:53:38.780357"], ["updated_at", "2020-02-15 08:53:38.780357"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-15 08:53:38.782126"], ["updated_at", "2020-02-15 08:53:38.782126"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "HTV-32-LED"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "HTV-32-LED"], ["name", "Haier"], ["created_at", "2020-02-15 08:53:38.832144"], ["updated_at", "2020-02-15 08:53:38.832144"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products/1/edit" for 127.0.0.1 at 2020-02-15 16:53:38 +0800
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (4.3ms)
+  Rendered products/edit.html.erb within layouts/application (5.0ms)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/gillian/apps/inventory_0215/inventory/public/packs-test
+[Webpacker] warning ../../../package.json: No license field
+
+[Webpacker] Hash: fa5c4b88c44641f2ec67
+Version: webpack 4.41.5
+Time: 5285ms
+Built at: 02/15/2020 4:53:44 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-8929e25716fb78d39f3f.js   1.29 MiB  application  [emitted] [immutable]  application
+js/application-8929e25716fb78d39f3f.js.map   1.42 MiB  application  [emitted] [dev]        application
+    js/hello_react-e4b20209d96e4f6e78fe.js   1.19 MiB  hello_react  [emitted] [immutable]  hello_react
+js/hello_react-e4b20209d96e4f6e78fe.js.map   1.37 MiB  hello_react  [emitted] [dev]        hello_react
+                             manifest.json  743 bytes               [emitted]              
+Entrypoint application = js/application-8929e25716fb78d39f3f.js js/application-8929e25716fb78d39f3f.js.map
+Entrypoint hello_react = js/hello_react-e4b20209d96e4f6e78fe.js js/hello_react-e4b20209d96e4f6e78fe.js.map
+[./app/javascript/application.scss] 694 bytes {application} [built]
+[./app/javascript/packs/application.js] 389 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 1010 bytes {hello_react} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/javascript/application.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/javascript/application.scss 662 KiB {application} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 905 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 23 hidden modules
+
+  Rendered shared/_flash.html.erb (0.3ms)
+Completed 200 OK in 6087ms (Views: 6083.3ms | ActiveRecord: 0.1ms)
+Started PATCH "/products/1" for 127.0.0.1 at 2020-02-15 16:53:44 +0800
+Processing by ProductsController#update as HTML
+  Parameters: {"utf8"=>"✓", "product"=>{"name"=>"Sony", "sku"=>"SNY-65-LED"}, "commit"=>"Create Product", "id"=>"1"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) AND "products"."id" != ? LIMIT ?[0m  [["sku", "SNY-65-LED"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Update (0.1ms)[0m  [1m[33mUPDATE "products" SET "name" = ?, "sku" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["name", "Sony"], ["sku", "SNY-65-LED"], ["updated_at", "2020-02-15 08:53:44.934544"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://127.0.0.1/products/1
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+Started GET "/products/1" for 127.0.0.1 at 2020-02-15 16:53:44 +0800
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.2ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.0ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "2137"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "2137"], ["name", "Huawei P10 Plus"], ["created_at", "2020-02-15 08:53:44.943745"], ["updated_at", "2020-02-15 08:53:44.943745"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "3398"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "3398"], ["name", "iPhone 3GS"], ["created_at", "2020-02-15 08:53:44.944947"], ["updated_at", "2020-02-15 08:53:44.944947"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "3346"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "3346"], ["name", "Samsung Galaxy S7"], ["created_at", "2020-02-15 08:53:44.946341"], ["updated_at", "2020-02-15 08:53:44.946341"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "2213"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "2213"], ["name", "Samsung Galaxy S5"], ["created_at", "2020-02-15 08:53:44.948692"], ["updated_at", "2020-02-15 08:53:44.948692"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "SKU-001"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "SKU-001"], ["name", "Kobes"], ["created_at", "2020-02-15 08:53:44.950469"], ["updated_at", "2020-02-15 08:53:44.950469"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2020-02-15 16:53:53 +0800
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (3.2ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/products/new" for 127.0.0.1 at 2020-02-15 16:53:54 +0800
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (5.3ms)
+  Rendered products/new.html.erb within layouts/application (7.2ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.2ms)
+Completed 200 OK in 18ms (Views: 15.4ms | ActiveRecord: 0.0ms)
+Started POST "/products" for 127.0.0.1 at 2020-02-15 16:53:54 +0800
+Processing by ProductsController#create as HTML
+  Parameters: {"utf8"=>"✓", "product"=>{"name"=>"Huawei", "sku"=>"HUA-001"}, "commit"=>"Create Product"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "HUA-001"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "HUA-001"], ["name", "Huawei"], ["created_at", "2020-02-15 08:53:54.945228"], ["updated_at", "2020-02-15 08:53:54.945228"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://127.0.0.1/products/1
+Completed 302 Found in 4ms (ActiveRecord: 0.7ms)
+Started GET "/products/1" for 127.0.0.1 at 2020-02-15 16:53:54 +0800
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.1ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.1ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."name" = ? AND "products"."sku" = ? LIMIT ?[0m  [["name", "Huawei"], ["sku", "HUA-001"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "PROD-001"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "PROD-001"], ["name", "Xiaomi Mi 8 Pro"], ["created_at", "2020-02-15 08:53:54.959156"], ["updated_at", "2020-02-15 08:53:54.959156"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products/new" for 127.0.0.1 at 2020-02-15 16:53:54 +0800
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (0.8ms)
+  Rendered products/new.html.erb within layouts/application (0.9ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.0ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+Started POST "/products" for 127.0.0.1 at 2020-02-15 16:53:54 +0800
+Processing by ProductsController#create as HTML
+  Parameters: {"utf8"=>"✓", "product"=>{"name"=>"", "sku"=>""}, "commit"=>"Create Product"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (41.4ms)
+  Rendered products/new.html.erb within layouts/application (41.5ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.0ms)
+Completed 200 OK in 45ms (Views: 43.2ms | ActiveRecord: 0.2ms)
+Started POST "/products" for 127.0.0.1 at 2020-02-15 16:53:55 +0800
+Processing by ProductsController#create as HTML
+  Parameters: {"utf8"=>"✓", "product"=>{"name"=>"", "sku"=>"PROD-001"}, "commit"=>"Create Product"}
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "PROD-001"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (1.2ms)
+  Rendered products/new.html.erb within layouts/application (1.3ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "CAS-012"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "CAS-012"], ["name", "Casio Watch"], ["created_at", "2020-02-15 08:53:55.026728"], ["updated_at", "2020-02-15 08:53:55.026728"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products/1" for 127.0.0.1 at 2020-02-15 16:53:55 +0800
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.1ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.4ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m

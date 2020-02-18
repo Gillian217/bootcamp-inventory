@@ -1,0 +1,213 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (657.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (501.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateProducts (20200208031909)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "sku" varchar, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200208031909_create_products.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_products_on_sku" ON "products" ("sku")[0m
+  ↳ db/migrate/20200208031909_create_products.rb:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200208031909"]]
+  ↳ bin/rails:9
+  [1m[35m (518.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateWarehouses (20200208054845)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "warehouses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "street" varchar, "city" varchar, "province" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200208054845_create_warehouses.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200208054845"]]
+  ↳ bin/rails:9
+  [1m[35m (516.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateStocks (20200208061403)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "stocks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "count" integer, "product_id" integer, "warehouse_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_cfc800c26b"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+, CONSTRAINT "fk_rails_71dac01cca"
+FOREIGN KEY ("warehouse_id")
+  REFERENCES "warehouses" ("id")
+)[0m
+  ↳ db/migrate/20200208061403_create_stocks.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_stocks_on_product_id" ON "stocks" ("product_id")[0m
+  ↳ db/migrate/20200208061403_create_stocks.rb:3
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX "index_stocks_on_warehouse_id" ON "stocks" ("warehouse_id")[0m
+  ↳ db/migrate/20200208061403_create_stocks.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200208061403"]]
+  ↳ bin/rails:9
+  [1m[35m (601.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateOrders (20200208073412)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "warehouse_id" integer, "customer_name" varchar, "uuid" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_51a277863b"
+FOREIGN KEY ("warehouse_id")
+  REFERENCES "warehouses" ("id")
+)[0m
+  ↳ db/migrate/20200208073412_create_orders.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_orders_on_warehouse_id" ON "orders" ("warehouse_id")[0m
+  ↳ db/migrate/20200208073412_create_orders.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200208073412"]]
+  ↳ bin/rails:9
+  [1m[35m (506.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateOrderItems (20200208075453)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "order_items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantity" integer, "order_id" integer, "product_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_e3cb28f071"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+, CONSTRAINT "fk_rails_f1a29ddd47"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+)[0m
+  ↳ db/migrate/20200208075453_create_order_items.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_order_items_on_order_id" ON "order_items" ("order_id")[0m
+  ↳ db/migrate/20200208075453_create_order_items.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_order_items_on_product_id" ON "order_items" ("product_id")[0m
+  ↳ db/migrate/20200208075453_create_order_items.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200208075453"]]
+  ↳ bin/rails:9
+  [1m[35m (431.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-02-15 08:53:08.596216"], ["updated_at", "2020-02-15 08:53:08.596216"]]
+  ↳ bin/rails:9
+  [1m[35m (340.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "&XwUS6yR2N&+Z`$94eK@XzFp/p/ie^"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "&XwUS6yR2N&+Z`$94eK@XzFp/p/ie^"], ["name", "iPhone 6 / 6 Plus"], ["created_at", "2020-02-15 08:53:16.246417"], ["updated_at", "2020-02-15 08:53:16.246417"]]
+  ↳ db/seeds.rb:2
+  [1m[35m (342.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "05skEogwZlX7j6twhhXX"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "05skEogwZlX7j6twhhXX"], ["name", "Google Pixel 3"], ["created_at", "2020-02-15 08:53:16.593969"], ["updated_at", "2020-02-15 08:53:16.593969"]]
+  ↳ db/seeds.rb:2
+  [1m[35m (322.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "First Rd"], ["city", "Baguio"], ["province", "Benguet"], ["created_at", "2020-02-15 08:53:16.929848"], ["updated_at", "2020-02-15 08:53:16.929848"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (273.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mWarehouse Create (0.5ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "Tabora St."], ["city", "Binondo"], ["province", "Manila"], ["created_at", "2020-02-15 08:53:17.206427"], ["updated_at", "2020-02-15 08:53:17.206427"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (324.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ db/seeds.rb:22
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:21
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("count", "product_id", "warehouse_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["count", 10], ["product_id", 2], ["warehouse_id", 1], ["created_at", "2020-02-15 08:53:17.551840"], ["updated_at", "2020-02-15 08:53:17.551840"]]
+  ↳ db/seeds.rb:21
+  [1m[35m (321.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:21
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "UVr864F8zUbyYOAUd4cFOW9hpsZuGn"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "UVr864F8zUbyYOAUd4cFOW9hpsZuGn"], ["name", "iPhone 3GS"], ["created_at", "2020-02-15 08:53:21.932972"], ["updated_at", "2020-02-15 08:53:21.932972"]]
+  ↳ db/seeds.rb:2
+  [1m[35m (380.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "39gPmcOKpwhDezLdiIOZ7SH89Pbjp4"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "39gPmcOKpwhDezLdiIOZ7SH89Pbjp4"], ["name", "OnePlus 2"], ["created_at", "2020-02-15 08:53:22.318805"], ["updated_at", "2020-02-15 08:53:22.318805"]]
+  ↳ db/seeds.rb:2
+  [1m[35m (279.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mWarehouse Create (0.6ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "First Rd"], ["city", "Baguio"], ["province", "Benguet"], ["created_at", "2020-02-15 08:53:22.626059"], ["updated_at", "2020-02-15 08:53:22.626059"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (277.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mWarehouse Create (0.3ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "Tabora St."], ["city", "Binondo"], ["province", "Manila"], ["created_at", "2020-02-15 08:53:22.907907"], ["updated_at", "2020-02-15 08:53:22.907907"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (327.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ db/seeds.rb:22
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:21
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("count", "product_id", "warehouse_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["count", 10], ["product_id", 3], ["warehouse_id", 1], ["created_at", "2020-02-15 08:53:23.252146"], ["updated_at", "2020-02-15 08:53:23.252146"]]
+  ↳ db/seeds.rb:21
+  [1m[35m (324.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:21
+Started GET "/" for ::1 at 2020-02-19 04:36:04 +0800
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/gillian/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/gillian/.rvm/gems/ruby-2.6.3/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/gillian/.rvm/gems/ruby-2.6.3/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (8.1ms)
+Completed 200 OK in 55ms (Views: 13.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2020-02-19 04:36:11 +0800
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:14
+  Rendered products/index.html.erb within layouts/application (16.1ms)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/gillian/apps/repo_copy/bootcamp-inventory/public/packs
+[Webpacker] warning ../../../package.json: No license field
+
+[Webpacker] Hash: 3eaa5d5bcb5391d0121b
+Version: webpack 4.41.5
+Time: 9224ms
+Built at: 02/19/2020 4:36:22 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-632fffc2946108aabafb.js   1.29 MiB  application  [emitted] [immutable]  application
+js/application-632fffc2946108aabafb.js.map   1.42 MiB  application  [emitted] [dev]        application
+    js/hello_react-4a7ee8b78cb990134bd4.js   1.19 MiB  hello_react  [emitted] [immutable]  hello_react
+js/hello_react-4a7ee8b78cb990134bd4.js.map   1.37 MiB  hello_react  [emitted] [dev]        hello_react
+                             manifest.json  703 bytes               [emitted]              
+Entrypoint application = js/application-632fffc2946108aabafb.js js/application-632fffc2946108aabafb.js.map
+Entrypoint hello_react = js/hello_react-4a7ee8b78cb990134bd4.js js/hello_react-4a7ee8b78cb990134bd4.js.map
+[./app/javascript/application.scss] 694 bytes {application} [built]
+[./app/javascript/packs/application.js] 389 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 1010 bytes {hello_react} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/javascript/application.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/javascript/application.scss 662 KiB {application} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 905 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 23 hidden modules
+
+  Rendered shared/_flash.html.erb (0.9ms)
+Completed 200 OK in 10721ms (Views: 10706.0ms | ActiveRecord: 1.8ms)
+
+

@@ -1,0 +1,39 @@
+<h1>Warehouses</h1>
+
+<%= link_to 'New Warehouse', new_warehouse_path, class: 'btn btn-primary' %>
+
+<table id="warehouses-table">
+  <thead>
+    <tr>
+      <th>Street</th>
+      <th>City</th>
+      <th>Province</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @warehouses.each do |warehouse| %>
+      <tr id="warehouse--<%= warehouse.id %>">
+        <td id="warehouse--<%= warehouse.id %>_street">
+          <%= warehouse.street %>
+        </td>
+        <td id="warehouse--<%= warehouse.id %>_city">
+          <%= warehouse.city %>
+        </td>
+        <td id="warehouse--<%= warehouse.id %>_province">
+          <%= warehouse.province %>
+        </td>
+        <td id="warehouse--<%= warehouse.id %>_actions">
+          <%= link_to "Show", warehouse_path(warehouse) %>
+          <%= link_to "Edit", edit_warehouse_path(warehouse) %>
+          <%= link_to "Delete",
+                      warehouse_path(warehouse),
+                      class: "delete",
+                      method: :delete,
+                      data: {
+                        confirm: "Are you sure you want to delete this warehouse?"
+                      } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

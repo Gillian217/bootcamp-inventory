@@ -386,3 +386,283 @@ Processing by ProductsController#show as HTML
   Rendered shared/_flash.html.erb (0.4ms)
 Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms)
   [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (21.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (32.9ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:21:12.346709"], ["updated_at", "2020-02-19 09:21:12.346709"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:21:12.381217"], ["updated_at", "2020-02-19 09:21:12.381217"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:21:12.382588"], ["updated_at", "2020-02-19 09:21:12.382588"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:21:12.383892"], ["updated_at", "2020-02-19 09:21:12.383892"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "123 test"], ["city", "test city"], ["province", "test province"], ["created_at", "2020-02-19 09:21:12.385293"], ["updated_at", "2020-02-19 09:21:12.385293"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/warehouses" for 127.0.0.1 at 2020-02-19 17:21:14 +0800
+Processing by WarehousesController#index as HTML
+  Rendering warehouses/index.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  Rendered warehouses/index.html.erb within layouts/application (5.8ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.5ms)
+Completed 200 OK in 25ms (Views: 13.1ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.5ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "123 test"], ["city", "test city"], ["province", "test province"], ["created_at", "2020-02-19 09:21:15.596699"], ["updated_at", "2020-02-19 09:21:15.596699"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/warehouses" for 127.0.0.1 at 2020-02-19 17:21:15 +0800
+Processing by WarehousesController#index as HTML
+  Rendering warehouses/index.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  Rendered warehouses/index.html.erb within layouts/application (2.5ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.1ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.2ms)
+Started DELETE "/warehouses/1" for 127.0.0.1 at 2020-02-19 17:21:15 +0800
+Processing by WarehousesController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Destroy (0.2ms)[0m  [1m[31mDELETE FROM "warehouses" WHERE "warehouses"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://127.0.0.1:44027/warehouses
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/warehouses" for 127.0.0.1 at 2020-02-19 17:21:15 +0800
+Processing by WarehousesController#index as HTML
+  Rendering warehouses/index.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.0ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  Rendered warehouses/index.html.erb within layouts/application (0.3ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.0ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:29:19.319349"], ["updated_at", "2020-02-19 09:29:19.319349"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:29:19.320336"], ["updated_at", "2020-02-19 09:29:19.320336"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:29:19.320957"], ["updated_at", "2020-02-19 09:29:19.320957"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.0ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:29:19.321641"], ["updated_at", "2020-02-19 09:29:19.321641"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "123 test"], ["city", "test city"], ["province", "test province"], ["created_at", "2020-02-19 09:29:19.322282"], ["updated_at", "2020-02-19 09:29:19.322282"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/warehouses" for 127.0.0.1 at 2020-02-19 17:29:21 +0800
+Processing by WarehousesController#index as HTML
+  Rendering warehouses/index.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  Rendered warehouses/index.html.erb within layouts/application (2.1ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.2ms)
+Completed 200 OK in 8ms (Views: 4.7ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.2ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "123 test"], ["city", "test city"], ["province", "test province"], ["created_at", "2020-02-19 09:29:22.247287"], ["updated_at", "2020-02-19 09:29:22.247287"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/warehouses" for 127.0.0.1 at 2020-02-19 17:29:22 +0800
+Processing by WarehousesController#index as HTML
+  Rendering warehouses/index.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  Rendered warehouses/index.html.erb within layouts/application (0.6ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.0ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms)
+Started DELETE "/warehouses/1" for 127.0.0.1 at 2020-02-19 17:29:22 +0800
+Processing by WarehousesController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Destroy (0.0ms)[0m  [1m[31mDELETE FROM "warehouses" WHERE "warehouses"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://127.0.0.1:33493/warehouses
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+Started GET "/warehouses" for 127.0.0.1 at 2020-02-19 17:29:22 +0800
+Processing by WarehousesController#index as HTML
+  Rendering warehouses/index.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.0ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  Rendered warehouses/index.html.erb within layouts/application (0.3ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.0ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:32:22.566799"], ["updated_at", "2020-02-19 09:32:22.566799"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.0ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:32:22.567840"], ["updated_at", "2020-02-19 09:32:22.567840"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.0ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:32:22.568457"], ["updated_at", "2020-02-19 09:32:22.568457"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.0ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:32:22.568994"], ["updated_at", "2020-02-19 09:32:22.568994"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.0ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "123 test"], ["city", "test city"], ["province", "test province"], ["created_at", "2020-02-19 09:32:22.569631"], ["updated_at", "2020-02-19 09:32:22.569631"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/warehouses" for 127.0.0.1 at 2020-02-19 17:32:24 +0800
+Processing by WarehousesController#index as HTML
+  Rendering warehouses/index.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  Rendered warehouses/index.html.erb within layouts/application (2.6ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.3ms)
+Completed 200 OK in 10ms (Views: 6.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.7ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "123 test"], ["city", "test city"], ["province", "test province"], ["created_at", "2020-02-19 09:32:25.038763"], ["updated_at", "2020-02-19 09:32:25.038763"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/warehouses" for 127.0.0.1 at 2020-02-19 17:32:25 +0800
+Processing by WarehousesController#index as HTML
+  Rendering warehouses/index.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  Rendered warehouses/index.html.erb within layouts/application (2.3ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.1ms)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.2ms)
+Started DELETE "/warehouses/1" for 127.0.0.1 at 2020-02-19 17:32:25 +0800
+Processing by WarehousesController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Destroy (0.1ms)[0m  [1m[31mDELETE FROM "warehouses" WHERE "warehouses"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://127.0.0.1:46305/warehouses
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/warehouses" for 127.0.0.1 at 2020-02-19 17:32:25 +0800
+Processing by WarehousesController#index as HTML
+  Rendering warehouses/index.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.0ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  Rendered warehouses/index.html.erb within layouts/application (0.3ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.0ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.2ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:33:37.495064"], ["updated_at", "2020-02-19 09:33:37.495064"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:33:37.496140"], ["updated_at", "2020-02-19 09:33:37.496140"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.0ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:33:37.496854"], ["updated_at", "2020-02-19 09:33:37.496854"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.0ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:33:37.497502"], ["updated_at", "2020-02-19 09:33:37.497502"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.0ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "123 test"], ["city", "test city"], ["province", "test province"], ["created_at", "2020-02-19 09:33:37.498170"], ["updated_at", "2020-02-19 09:33:37.498170"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/warehouses" for 127.0.0.1 at 2020-02-19 17:33:39 +0800
+Processing by WarehousesController#index as HTML
+  Rendering warehouses/index.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  Rendered warehouses/index.html.erb within layouts/application (4.7ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.7ms)
+Completed 200 OK in 26ms (Views: 12.0ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.2ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "123 test"], ["city", "test city"], ["province", "test province"], ["created_at", "2020-02-19 09:33:42.320165"], ["updated_at", "2020-02-19 09:33:42.320165"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/warehouses" for 127.0.0.1 at 2020-02-19 17:33:42 +0800
+Processing by WarehousesController#index as HTML
+  Rendering warehouses/index.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  Rendered warehouses/index.html.erb within layouts/application (0.6ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.0ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms)
+Started DELETE "/warehouses/1" for 127.0.0.1 at 2020-02-19 17:33:42 +0800
+Processing by WarehousesController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Destroy (0.0ms)[0m  [1m[31mDELETE FROM "warehouses" WHERE "warehouses"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://127.0.0.1:36307/warehouses
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+Started GET "/warehouses" for 127.0.0.1 at 2020-02-19 17:33:42 +0800
+Processing by WarehousesController#index as HTML
+  Rendering warehouses/index.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.0ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  Rendered warehouses/index.html.erb within layouts/application (0.3ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.0ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:37:05.769962"], ["updated_at", "2020-02-19 09:37:05.769962"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.1ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:37:05.770980"], ["updated_at", "2020-02-19 09:37:05.770980"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.0ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:37:05.771601"], ["updated_at", "2020-02-19 09:37:05.771601"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.0ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "MyString"], ["city", "MyString"], ["province", "MyString"], ["created_at", "2020-02-19 09:37:05.772189"], ["updated_at", "2020-02-19 09:37:05.772189"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.0ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "123 test"], ["city", "test city"], ["province", "test province"], ["created_at", "2020-02-19 09:37:05.772887"], ["updated_at", "2020-02-19 09:37:05.772887"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/warehouses" for 127.0.0.1 at 2020-02-19 17:37:07 +0800
+Processing by WarehousesController#index as HTML
+  Rendering warehouses/index.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  Rendered warehouses/index.html.erb within layouts/application (4.6ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.5ms)
+Completed 200 OK in 24ms (Views: 10.9ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Create (0.5ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "123 test"], ["city", "test city"], ["province", "test province"], ["created_at", "2020-02-19 09:37:08.791421"], ["updated_at", "2020-02-19 09:37:08.791421"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/warehouses" for 127.0.0.1 at 2020-02-19 17:37:08 +0800
+Processing by WarehousesController#index as HTML
+  Rendering warehouses/index.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  Rendered warehouses/index.html.erb within layouts/application (2.1ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.1ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.2ms)
+Started DELETE "/warehouses/1" for 127.0.0.1 at 2020-02-19 17:37:08 +0800
+Processing by WarehousesController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWarehouse Destroy (0.1ms)[0m  [1m[31mDELETE FROM "warehouses" WHERE "warehouses"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://127.0.0.1:39737/warehouses
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+Started GET "/warehouses" for 127.0.0.1 at 2020-02-19 17:37:08 +0800
+Processing by WarehousesController#index as HTML
+  Rendering warehouses/index.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.0ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  Rendered warehouses/index.html.erb within layouts/application (0.3ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.0ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m

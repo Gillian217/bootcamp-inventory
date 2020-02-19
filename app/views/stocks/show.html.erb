@@ -5,7 +5,7 @@
     <tr>
       <td>Product Name</td>
       <td id="stock--<%= @stock.id %>_product_id_name">
-        <%= @stock.product_id.name %>
+        <%= @stock.product.name %>
       </td>
     </tr>
     <tr>
@@ -16,8 +16,8 @@
     </tr>
     <tr>
       <td>Province</td>
-      <td id="warehouse--<%= @warehouse.id %>_province">
-        <%= @warehouse.province %>
+      <td id="warehouse--<%= @stock.warehouse.id %>_province">
+        <%= @stock.warehouse.full_address %>
       </td>
     </tr>
   </tbody>

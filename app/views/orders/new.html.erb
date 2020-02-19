@@ -1,0 +1,8 @@
+<%= form_with model: @order, remote: false do |f| %>
+  <%= f.label :customer_name %>
+  <%= f.text_field :customer_name %>
+  <%= f.label :warehouse %>
+  <%= f.select :warehouse_id,
+               @warehouses.map { |w| [w.full_address, w.id] } %>
+  <%= f.submit "Save Order", class: "btn btn-success" %>
+<% end %>

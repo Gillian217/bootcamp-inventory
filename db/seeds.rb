@@ -1,7 +1,7 @@
 2.times do
   Product.create!(
     name: Faker::Device.model_name,
-    sku: Faker::Device.serial
+    sku: rand(1000000..9999999999)
   )
 end
 

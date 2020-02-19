@@ -776,3 +776,1756 @@ Processing by StocksController#index as HTML
 Completed 200 OK in 52ms (Views: 49.2ms | ActiveRecord: 1.5ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "39gPmcOKpwhDezLdiIOZ7SH89Pbjp4"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "order_items"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "order_items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantity" integer, "order_id" integer, "product_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX "index_order_items_on_order_id" ON "order_items" ("order_id")[0m
+  ↳ db/schema.rb:15
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE  INDEX "index_order_items_on_product_id" ON "order_items" ("product_id")[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders"[0m
+  ↳ db/schema.rb:25
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "warehouse_id" integer, "customer_name" varchar, "uuid" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:25
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX "index_orders_on_warehouse_id" ON "orders" ("warehouse_id")[0m
+  ↳ db/schema.rb:25
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "products"[0m
+  ↳ db/schema.rb:34
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "sku" varchar, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:34
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_products_on_sku" ON "products" ("sku")[0m
+  ↳ db/schema.rb:34
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "stocks"[0m
+  ↳ db/schema.rb:42
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "stocks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "count" integer, "product_id" integer, "warehouse_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:42
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_stocks_on_product_id" ON "stocks" ("product_id")[0m
+  ↳ db/schema.rb:42
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX "index_stocks_on_warehouse_id" ON "stocks" ("warehouse_id")[0m
+  ↳ db/schema.rb:42
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "warehouses"[0m
+  ↳ db/schema.rb:52
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "warehouses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "street" varchar, "city" varchar, "province" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:52
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200208075453)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200208073412),
+(20200208061403),
+(20200208054845),
+(20200208031909);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-02-19 11:37:40.102357"], ["updated_at", "2020-02-19 11:37:40.102357"]]
+  ↳ db/schema.rb:13
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "order_items"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (50.2ms)[0m  [1m[35mCREATE TABLE "order_items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantity" integer, "order_id" integer, "product_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX "index_order_items_on_order_id" ON "order_items" ("order_id")[0m
+  ↳ db/schema.rb:15
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX "index_order_items_on_product_id" ON "order_items" ("product_id")[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders"[0m
+  ↳ db/schema.rb:25
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "warehouse_id" integer, "customer_name" varchar, "uuid" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:25
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX "index_orders_on_warehouse_id" ON "orders" ("warehouse_id")[0m
+  ↳ db/schema.rb:25
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "products"[0m
+  ↳ db/schema.rb:34
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "sku" varchar, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:34
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_products_on_sku" ON "products" ("sku")[0m
+  ↳ db/schema.rb:34
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "stocks"[0m
+  ↳ db/schema.rb:42
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "stocks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "count" integer, "product_id" integer, "warehouse_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:42
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX "index_stocks_on_product_id" ON "stocks" ("product_id")[0m
+  ↳ db/schema.rb:42
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX "index_stocks_on_warehouse_id" ON "stocks" ("warehouse_id")[0m
+  ↳ db/schema.rb:42
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "warehouses"[0m
+  ↳ db/schema.rb:52
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "warehouses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "street" varchar, "city" varchar, "province" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:52
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200208075453)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200208073412),
+(20200208061403),
+(20200208054845),
+(20200208031909);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-02-19 11:37:40.274796"], ["updated_at", "2020-02-19 11:37:40.274796"]]
+  ↳ db/schema.rb:13
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.5ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2020-02-19 11:37:40.282292"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "order_items"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "order_items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantity" integer, "order_id" integer, "product_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX "index_order_items_on_order_id" ON "order_items" ("order_id")[0m
+  ↳ db/schema.rb:15
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX "index_order_items_on_product_id" ON "order_items" ("product_id")[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders"[0m
+  ↳ db/schema.rb:25
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "warehouse_id" integer, "customer_name" varchar, "uuid" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:25
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX "index_orders_on_warehouse_id" ON "orders" ("warehouse_id")[0m
+  ↳ db/schema.rb:25
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "products"[0m
+  ↳ db/schema.rb:34
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "sku" varchar, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:34
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_products_on_sku" ON "products" ("sku")[0m
+  ↳ db/schema.rb:34
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "stocks"[0m
+  ↳ db/schema.rb:42
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "stocks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "count" integer, "product_id" integer, "warehouse_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:42
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE  INDEX "index_stocks_on_product_id" ON "stocks" ("product_id")[0m
+  ↳ db/schema.rb:42
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE  INDEX "index_stocks_on_warehouse_id" ON "stocks" ("warehouse_id")[0m
+  ↳ db/schema.rb:42
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "warehouses"[0m
+  ↳ db/schema.rb:52
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "warehouses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "street" varchar, "city" varchar, "province" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:52
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200208075453)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200208073412),
+(20200208061403),
+(20200208054845),
+(20200208031909);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-02-19 11:38:21.543262"], ["updated_at", "2020-02-19 11:38:21.543262"]]
+  ↳ db/schema.rb:13
+  [1m[35m (19.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "order_items"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "order_items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantity" integer, "order_id" integer, "product_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX "index_order_items_on_order_id" ON "order_items" ("order_id")[0m
+  ↳ db/schema.rb:15
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_order_items_on_product_id" ON "order_items" ("product_id")[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders"[0m
+  ↳ db/schema.rb:25
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "warehouse_id" integer, "customer_name" varchar, "uuid" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:25
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX "index_orders_on_warehouse_id" ON "orders" ("warehouse_id")[0m
+  ↳ db/schema.rb:25
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "products"[0m
+  ↳ db/schema.rb:34
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "sku" varchar, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:34
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_products_on_sku" ON "products" ("sku")[0m
+  ↳ db/schema.rb:34
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "stocks"[0m
+  ↳ db/schema.rb:42
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "stocks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "count" integer, "product_id" integer, "warehouse_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:42
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX "index_stocks_on_product_id" ON "stocks" ("product_id")[0m
+  ↳ db/schema.rb:42
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX "index_stocks_on_warehouse_id" ON "stocks" ("warehouse_id")[0m
+  ↳ db/schema.rb:42
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "warehouses"[0m
+  ↳ db/schema.rb:52
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "warehouses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "street" varchar, "city" varchar, "province" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:52
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200208075453)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (2.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200208073412),
+(20200208061403),
+(20200208054845),
+(20200208031909);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-02-19 11:38:21.686421"], ["updated_at", "2020-02-19 11:38:21.686421"]]
+  ↳ db/schema.rb:13
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2020-02-19 11:38:21.691394"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "5348316698"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Create (0.6ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "5348316698"], ["name", "iPhone 4"], ["created_at", "2020-02-19 11:38:21.843535"], ["updated_at", "2020-02-19 11:38:21.843535"]]
+  ↳ db/seeds.rb:2
+  [1m[35m (8.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "890151418"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Create (0.6ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "890151418"], ["name", "Google Pixel XL"], ["created_at", "2020-02-19 11:38:21.859484"], ["updated_at", "2020-02-19 11:38:21.859484"]]
+  ↳ db/seeds.rb:2
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mWarehouse Create (1.6ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "First Rd"], ["city", "Baguio"], ["province", "Benguet"], ["created_at", "2020-02-19 11:38:21.878217"], ["updated_at", "2020-02-19 11:38:21.878217"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mWarehouse Create (0.5ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "Tabora St."], ["city", "Binondo"], ["province", "Manila"], ["created_at", "2020-02-19 11:38:21.883874"], ["updated_at", "2020-02-19 11:38:21.883874"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ db/seeds.rb:22
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:21
+  [1m[36mStock Create (0.6ms)[0m  [1m[32mINSERT INTO "stocks" ("count", "product_id", "warehouse_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["count", 10], ["product_id", 2], ["warehouse_id", 1], ["created_at", "2020-02-19 11:38:21.953382"], ["updated_at", "2020-02-19 11:38:21.953382"]]
+  ↳ db/seeds.rb:21
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:21
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "8686351385"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "8686351385"], ["name", "iPhone 6 / 6 Plus"], ["created_at", "2020-02-19 11:38:31.317435"], ["updated_at", "2020-02-19 11:38:31.317435"]]
+  ↳ db/seeds.rb:2
+  [1m[35m (9.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "1840397978"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "1840397978"], ["name", "iPhone 5C"], ["created_at", "2020-02-19 11:38:31.331189"], ["updated_at", "2020-02-19 11:38:31.331189"]]
+  ↳ db/seeds.rb:2
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mWarehouse Create (0.3ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "First Rd"], ["city", "Baguio"], ["province", "Benguet"], ["created_at", "2020-02-19 11:38:31.341539"], ["updated_at", "2020-02-19 11:38:31.341539"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mWarehouse Create (0.3ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "Tabora St."], ["city", "Binondo"], ["province", "Manila"], ["created_at", "2020-02-19 11:38:31.344525"], ["updated_at", "2020-02-19 11:38:31.344525"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ db/seeds.rb:22
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:21
+  [1m[36mStock Create (0.4ms)[0m  [1m[32mINSERT INTO "stocks" ("count", "product_id", "warehouse_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["count", 10], ["product_id", 3], ["warehouse_id", 4], ["created_at", "2020-02-19 11:38:31.358170"], ["updated_at", "2020-02-19 11:38:31.358170"]]
+  ↳ db/seeds.rb:21
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:21
+Started GET "/products" for ::1 at 2020-02-19 19:38:41 +0800
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/marcdagatan/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:14
+  Rendered products/index.html.erb within layouts/application (19.5ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.6ms)
+Completed 200 OK in 117ms (Views: 66.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/products" for ::1 at 2020-02-19 19:38:44 +0800
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:14
+  Rendered products/index.html.erb within layouts/application (4.2ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.5ms)
+Completed 200 OK in 17ms (Views: 14.4ms | ActiveRecord: 0.2ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "68133476"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "68133476"], ["name", "Xiaomi Redmi Note 6 Pro"], ["created_at", "2020-02-19 11:38:56.365033"], ["updated_at", "2020-02-19 11:38:56.365033"]]
+  ↳ db/seeds.rb:2
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE LOWER("products"."sku") = LOWER(?) LIMIT ?[0m  [["sku", "6605217806"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("sku", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sku", "6605217806"], ["name", "Samsung Galaxy S5"], ["created_at", "2020-02-19 11:38:56.369440"], ["updated_at", "2020-02-19 11:38:56.369440"]]
+  ↳ db/seeds.rb:2
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:2
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mWarehouse Create (0.3ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "First Rd"], ["city", "Baguio"], ["province", "Benguet"], ["created_at", "2020-02-19 11:38:56.380212"], ["updated_at", "2020-02-19 11:38:56.380212"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mWarehouse Create (0.3ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "Tabora St."], ["city", "Binondo"], ["province", "Manila"], ["created_at", "2020-02-19 11:38:56.383284"], ["updated_at", "2020-02-19 11:38:56.383284"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ db/seeds.rb:22
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:21
+  [1m[36mStock Create (0.4ms)[0m  [1m[32mINSERT INTO "stocks" ("count", "product_id", "warehouse_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["count", 10], ["product_id", 1], ["warehouse_id", 4], ["created_at", "2020-02-19 11:38:56.397845"], ["updated_at", "2020-02-19 11:38:56.397845"]]
+  ↳ db/seeds.rb:21
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:21
+Started GET "/products" for ::1 at 2020-02-19 19:38:58 +0800
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:14
+  Rendered products/index.html.erb within layouts/application (6.0ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.6ms)
+Completed 200 OK in 20ms (Views: 16.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/warehouses" for ::1 at 2020-02-19 19:39:11 +0800
+Processing by WarehousesController#index as HTML
+  Rendering warehouses/index.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ app/views/warehouses/index.html.erb:14
+  Rendered warehouses/index.html.erb within layouts/application (22.8ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (1.0ms)
+Completed 200 OK in 54ms (Views: 40.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/warehouses/1" for ::1 at 2020-02-19 19:39:13 +0800
+Processing by WarehousesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWarehouse Load (0.3ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/warehouses_controller.rb:48
+  Rendering warehouses/show.html.erb within layouts/application
+  Rendered warehouses/show.html.erb within layouts/application (0.8ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.4ms)
+Completed 200 OK in 25ms (Views: 17.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warehouses/1/edit" for ::1 at 2020-02-19 19:39:16 +0800
+Processing by WarehousesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWarehouse Load (0.3ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/warehouses_controller.rb:48
+  Rendering warehouses/edit.html.erb within layouts/application
+  Rendered warehouses/_form.html.erb (194.9ms)
+  Rendered warehouses/edit.html.erb within layouts/application (197.5ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.4ms)
+Completed 200 OK in 211ms (Views: 207.6ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/warehouses/1" for ::1 at 2020-02-19 19:39:21 +0800
+Processing by WarehousesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"fgQIeQlZtHGlVRd1Vd8qxfYppaME8TidOE959qkJq8ZzqCMu4l/NlYDVfKNTH0qNLgwy93YWewB2kiQBr7sKZg==", "id"=>"1"}
+  [1m[36mWarehouse Load (1.3ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/warehouses_controller.rb:48
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/warehouses_controller.rb:39
+  [1m[36mWarehouse Destroy (1.5ms)[0m  [1m[31mDELETE FROM "warehouses" WHERE "warehouses"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/warehouses_controller.rb:39
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/warehouses_controller.rb:39
+Redirected to http://localhost:3000/warehouses
+Completed 302 Found in 19ms (ActiveRecord: 4.3ms)
+
+
+Started GET "/warehouses" for ::1 at 2020-02-19 19:39:21 +0800
+Processing by WarehousesController#index as HTML
+  Rendering warehouses/index.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ app/views/warehouses/index.html.erb:14
+  Rendered warehouses/index.html.erb within layouts/application (2.4ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.4ms)
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/warehouses/new" for ::1 at 2020-02-19 19:39:23 +0800
+Processing by WarehousesController#new as HTML
+  Rendering warehouses/new.html.erb within layouts/application
+  Rendered warehouses/_form.html.erb (5.1ms)
+  Rendered warehouses/new.html.erb within layouts/application (6.4ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.4ms)
+Completed 200 OK in 26ms (Views: 22.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/warehouses" for ::1 at 2020-02-19 19:39:30 +0800
+Processing by WarehousesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/45zoH9RVgMH+WNceuVKUhOfi7ReEqgTycVyNxjQDFjEG+c1p88aBQY9Fcus01jlrjy9+QvmOkGosUzUPsa5SQ==", "warehouse"=>{"street"=>"Uhhh", "city"=>"123", "province"=>":D"}, "commit"=>"Save Warehouse"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/warehouses_controller.rb:17
+  [1m[36mWarehouse Create (0.8ms)[0m  [1m[32mINSERT INTO "warehouses" ("street", "city", "province", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["street", "Uhhh"], ["city", "123"], ["province", ":D"], ["created_at", "2020-02-19 11:39:30.305989"], ["updated_at", "2020-02-19 11:39:30.305989"]]
+  ↳ app/controllers/warehouses_controller.rb:17
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/warehouses_controller.rb:17
+Redirected to http://localhost:3000/warehouses/7
+Completed 302 Found in 21ms (ActiveRecord: 5.7ms)
+
+
+Started GET "/warehouses/7" for ::1 at 2020-02-19 19:39:30 +0800
+Processing by WarehousesController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/warehouses_controller.rb:48
+  Rendering warehouses/show.html.erb within layouts/application
+  Rendered warehouses/show.html.erb within layouts/application (1.3ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.4ms)
+Completed 200 OK in 16ms (Views: 12.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/stocks" for ::1 at 2020-02-19 19:39:40 +0800
+Processing by StocksController#index as HTML
+  Rendering stocks/index.html.erb within layouts/application
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ app/views/stocks/index.html.erb:13
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/stocks/index.html.erb:16
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/stocks/index.html.erb:26
+  Rendered stocks/index.html.erb within layouts/application (23.4ms)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 1.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `street' for nil:NilClass):
+    23:       </tr>
+    24:       <tr id="stock--<%= stock.id %>">
+    25:         <td id="stock--<%= stock.id %>_warehouse">
+    26:           <%= stock.warehouse.street + " " + stock.warehouse.city + " " + stock.warehouse.province %>
+    27:         </td>
+    28:       </tr>
+    29:     <% end %>
+  
+app/views/stocks/index.html.erb:26:in `block in _app_views_stocks_index_html_erb__3632254415130775263_70326446310220'
+app/views/stocks/index.html.erb:13:in `_app_views_stocks_index_html_erb__3632254415130775263_70326446310220'
+Started PUT "/__web_console/repl_sessions/db22a8b1816b4cd93d7b2efac1c0d590" for ::1 at 2020-02-19 19:39:48 +0800
+Started PUT "/__web_console/repl_sessions/db22a8b1816b4cd93d7b2efac1c0d590" for ::1 at 2020-02-19 19:39:49 +0800
+Started PUT "/__web_console/repl_sessions/db22a8b1816b4cd93d7b2efac1c0d590" for ::1 at 2020-02-19 19:39:50 +0800
+Started PUT "/__web_console/repl_sessions/db22a8b1816b4cd93d7b2efac1c0d590" for ::1 at 2020-02-19 19:39:55 +0800
+Started PUT "/__web_console/repl_sessions/db22a8b1816b4cd93d7b2efac1c0d590" for ::1 at 2020-02-19 19:39:57 +0800
+Started PUT "/__web_console/repl_sessions/db22a8b1816b4cd93d7b2efac1c0d590" for ::1 at 2020-02-19 19:40:22 +0800
+Started PUT "/__web_console/repl_sessions/db22a8b1816b4cd93d7b2efac1c0d590" for ::1 at 2020-02-19 19:40:28 +0800
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."warehouse_id" = ? LIMIT ?[0m  [["warehouse_id", 1], ["LIMIT", 11]]
+  ↳ /Users/marcdagatan/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Started PUT "/__web_console/repl_sessions/db22a8b1816b4cd93d7b2efac1c0d590" for ::1 at 2020-02-19 19:40:30 +0800
+Started PUT "/__web_console/repl_sessions/db22a8b1816b4cd93d7b2efac1c0d590" for ::1 at 2020-02-19 19:40:31 +0800
+  [1m[36mStock Load (0.6ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."warehouse_id" = ?[0m  [["warehouse_id", 1]]
+  ↳ app/views/stocks/index.html.erb:26
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/views/stocks/index.html.erb:26
+  [1m[36mStock Destroy (0.8ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = ?[0m  [["id", 1]]
+  ↳ app/views/stocks/index.html.erb:26
+  [1m[35m (9.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/views/stocks/index.html.erb:26
+Started GET "/stocks" for ::1 at 2020-02-19 19:40:33 +0800
+Processing by StocksController#index as HTML
+  Rendering stocks/index.html.erb within layouts/application
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ app/views/stocks/index.html.erb:13
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/stocks/index.html.erb:16
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/stocks/index.html.erb:26
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/stocks/index.html.erb:16
+  [1m[36mCACHE Warehouse Load (0.0ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/stocks/index.html.erb:26
+  Rendered stocks/index.html.erb within layouts/application (63.3ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.6ms)
+Completed 200 OK in 84ms (Views: 74.7ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/stocks" for ::1 at 2020-02-19 19:41:35 +0800
+Processing by StocksController#index as HTML
+  Rendering stocks/index.html.erb within layouts/application
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/marcdagatan/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/did_you_mean-1.3.0/lib/did_you_mean/core_ext/name_error.rb:8
+  [1m[36mCACHE Stock Load (0.0ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/marcdagatan/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/did_you_mean-1.3.0/lib/did_you_mean/core_ext/name_error.rb:8
+  [1m[36mCACHE Stock Load (0.0ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/marcdagatan/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/did_you_mean-1.3.0/lib/did_you_mean/core_ext/name_error.rb:8
+  [1m[36mCACHE Stock Load (0.0ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/marcdagatan/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/did_you_mean-1.3.0/lib/did_you_mean/core_ext/name_error.rb:8
+  [1m[36mCACHE Stock Load (0.0ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/marcdagatan/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/did_you_mean-1.3.0/lib/did_you_mean/core_ext/name_error.rb:4
+  [1m[36mCACHE Stock Load (0.0ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/marcdagatan/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/did_you_mean-1.3.0/lib/did_you_mean/core_ext/name_error.rb:4
+  [1m[36mCACHE Stock Load (0.0ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/marcdagatan/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/did_you_mean-1.3.0/lib/did_you_mean/core_ext/name_error.rb:4
+  [1m[36mCACHE Stock Load (0.0ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/marcdagatan/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/did_you_mean-1.3.0/lib/did_you_mean/core_ext/name_error.rb:4
+  Rendered stocks/index.html.erb within layouts/application (338.0ms)
+Completed 500 Internal Server Error in 343ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_stock_path' for #<#<Class:0x00007fec52d7a3c0>:0x00007fec4de1c800>
+Did you mean?  new_product_path):
+    1: <h1>Stocks</h1>
+    2: 
+    3: <%= link_to "New Stock", new_stock_path, class: "btn btn-primary" %>
+    4: <table id="stocks-table">
+    5:   <thead>
+    6:     <tr>
+  
+app/views/stocks/index.html.erb:3:in `_app_views_stocks_index_html_erb__3632254415130775263_70326447826980'
+Started PUT "/__web_console/repl_sessions/aaec06c06e4f25c46112d7ed34066dda" for ::1 at 2020-02-19 19:41:40 +0800
+Started GET "/stocks" for ::1 at 2020-02-19 19:41:49 +0800
+Processing by StocksController#index as HTML
+  Rendering stocks/index.html.erb within layouts/application
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ app/views/stocks/index.html.erb:13
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/stocks/index.html.erb:16
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/stocks/index.html.erb:26
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/stocks/index.html.erb:16
+  [1m[36mCACHE Warehouse Load (0.0ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/stocks/index.html.erb:26
+  Rendered stocks/index.html.erb within layouts/application (76.4ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (1.3ms)
+Completed 200 OK in 95ms (Views: 78.2ms | ActiveRecord: 12.4ms)
+
+
+Started GET "/stocks/new" for ::1 at 2020-02-19 19:41:51 +0800
+Processing by StocksController#new as HTML
+  Rendering stocks/new.html.erb within layouts/application
+  Rendered stocks/_form.html.erb (289.2ms)
+  Rendered stocks/new.html.erb within layouts/application (291.1ms)
+Completed 500 Internal Server Error in 298ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `warehouse' for #<#<Class:0x00007fec505fe3c8>:0x00007fec52c9a4f0>
+Did you mean?  warehouse_url):
+    1: <%= form_with model: warehouse, local: true, id: "warehouse-form" do |f| %>
+    2:   <div class="form-group">
+    3:     <%= f.label :street %>
+    4:     <%= f.text_field :street, class: "form-control" %>
+  
+app/views/stocks/_form.html.erb:1:in `_app_views_stocks__form_html_erb__727578559999326257_70326489006780'
+app/views/stocks/new.html.erb:4:in `_app_views_stocks_new_html_erb___3950508851186486439_70326488979100'
+Started GET "/stocks/new" for ::1 at 2020-02-19 19:42:29 +0800
+Processing by StocksController#new as HTML
+  Rendering stocks/new.html.erb within layouts/application
+  Rendered stocks/_form.html.erb (1.5ms)
+  Rendered stocks/new.html.erb within layouts/application (2.8ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.4ms)
+Completed 200 OK in 16ms (Views: 11.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stocks/new" for ::1 at 2020-02-19 19:43:22 +0800
+Processing by StocksController#new as HTML
+  Rendering stocks/new.html.erb within layouts/application
+  Rendered stocks/_form.html.erb (254.6ms)
+  Rendered stocks/new.html.erb within layouts/application (259.6ms)
+Completed 500 Internal Server Error in 265ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `input' for #<ActionView::Helpers::FormBuilder:0x00007fec502f7990>):
+    1: <%= form_with model: stock, local: true, id: "warehouse-form" do |f| %>
+    2:   <div class="form-group">
+    3:     <%= f.label :count %>
+    4:     <%= f.input :count, class: "form-control" %>
+    5:   </div>
+    6: 
+    7:   <%= f.submit "Save Stock", class: "btn btn-primary", id: "submit-button" %>
+  
+app/views/stocks/_form.html.erb:4:in `block in _app_views_stocks__form_html_erb__727578559999326257_70326446060500'
+app/views/stocks/_form.html.erb:1:in `_app_views_stocks__form_html_erb__727578559999326257_70326446060500'
+app/views/stocks/new.html.erb:4:in `_app_views_stocks_new_html_erb___3950508851186486439_70326484519080'
+Started GET "/stocks/new" for ::1 at 2020-02-19 19:43:35 +0800
+Processing by StocksController#new as HTML
+  Rendering stocks/new.html.erb within layouts/application
+  Rendered stocks/_form.html.erb (173.1ms)
+  Rendered stocks/new.html.erb within layouts/application (175.0ms)
+Completed 500 Internal Server Error in 181ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `input_field' for #<ActionView::Helpers::FormBuilder:0x00007fec505ec768>):
+    1: <%= form_with model: stock, local: true, id: "warehouse-form" do |f| %>
+    2:   <div class="form-group">
+    3:     <%= f.label :count %>
+    4:     <%= f.input_field :count, class: "form-control" %>
+    5:   </div>
+    6: 
+    7:   <%= f.submit "Save Stock", class: "btn btn-primary", id: "submit-button" %>
+  
+app/views/stocks/_form.html.erb:4:in `block in _app_views_stocks__form_html_erb__727578559999326257_70326468684080'
+app/views/stocks/_form.html.erb:1:in `_app_views_stocks__form_html_erb__727578559999326257_70326468684080'
+app/views/stocks/new.html.erb:4:in `_app_views_stocks_new_html_erb___3950508851186486439_70326468672900'
+Started GET "/stocks/new" for ::1 at 2020-02-19 19:43:56 +0800
+Processing by StocksController#new as HTML
+  Rendering stocks/new.html.erb within layouts/application
+  Rendered stocks/_form.html.erb (1.2ms)
+  Rendered stocks/new.html.erb within layouts/application (2.7ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.4ms)
+Completed 200 OK in 14ms (Views: 10.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stocks/new" for ::1 at 2020-02-19 19:47:10 +0800
+Processing by StocksController#new as HTML
+  Rendering stocks/new.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.4ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ app/views/stocks/_form.html.erb:4
+  Rendered stocks/_form.html.erb (22.8ms)
+  Rendered stocks/new.html.erb within layouts/application (24.1ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.3ms)
+Completed 200 OK in 32ms (Views: 30.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/stocks/new" for ::1 at 2020-02-19 19:47:21 +0800
+Processing by StocksController#new as HTML
+  Rendering stocks/new.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ app/views/stocks/_form.html.erb:4
+  Rendered stocks/_form.html.erb (4.7ms)
+  Rendered stocks/new.html.erb within layouts/application (6.1ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.5ms)
+Completed 200 OK in 22ms (Views: 19.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/stocks/new" for ::1 at 2020-02-19 19:47:32 +0800
+Processing by StocksController#new as HTML
+  Rendering stocks/new.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.3ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ app/views/stocks/_form.html.erb:4
+  Rendered stocks/_form.html.erb (4.9ms)
+  Rendered stocks/new.html.erb within layouts/application (9.1ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.9ms)
+Completed 200 OK in 32ms (Views: 24.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/stocks/new" for ::1 at 2020-02-19 19:48:22 +0800
+Processing by StocksController#new as HTML
+  Rendering stocks/new.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ app/views/stocks/_form.html.erb:4
+  Rendered stocks/_form.html.erb (2.3ms)
+  Rendered stocks/new.html.erb within layouts/application (3.3ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.3ms)
+Completed 200 OK in 13ms (Views: 10.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/stocks/new" for ::1 at 2020-02-19 19:50:08 +0800
+Processing by StocksController#new as HTML
+  Rendering stocks/new.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ app/views/stocks/_form.html.erb:4
+  Rendered stocks/_form.html.erb (3.4ms)
+  Rendered stocks/new.html.erb within layouts/application (4.7ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.9ms)
+Completed 200 OK in 17ms (Views: 14.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/stocks/new" for ::1 at 2020-02-19 19:51:17 +0800
+Processing by StocksController#new as HTML
+  Rendering stocks/new.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ app/views/stocks/_form.html.erb:4
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/stocks/_form.html.erb:7
+  Rendered stocks/_form.html.erb (4.5ms)
+  Rendered stocks/new.html.erb within layouts/application (5.9ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (2.7ms)
+Completed 200 OK in 20ms (Views: 18.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/stocks/new" for ::1 at 2020-02-19 19:53:07 +0800
+Processing by StocksController#new as HTML
+  Rendering stocks/new.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.3ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ app/views/stocks/_form.html.erb:4
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/stocks/_form.html.erb:7
+  Rendered stocks/_form.html.erb (38.7ms)
+  Rendered stocks/new.html.erb within layouts/application (41.7ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.7ms)
+Completed 200 OK in 82ms (Views: 53.0ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/stocks" for ::1 at 2020-02-19 19:53:18 +0800
+Processing by StocksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"n9VOh4ISzuf3JripFp01CeDx54oiypQ+fMNxn1Gr1DiSeWXQaRS3A9Km038QXVVBONRw3lAt16MyHixoVxl1mA==", "stock"=>{"warehouse_id"=>"3", "product_id"=>"3", "count"=>"10"}, "commit"=>"Save Stock"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/stocks_controller.rb:14
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/stocks_controller.rb:14
+  [1m[36mWarehouse Load (0.3ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/stocks_controller.rb:14
+  [1m[36mStock Create (1.7ms)[0m  [1m[32mINSERT INTO "stocks" ("count", "product_id", "warehouse_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["count", 10], ["product_id", 3], ["warehouse_id", 3], ["created_at", "2020-02-19 11:53:18.947459"], ["updated_at", "2020-02-19 11:53:18.947459"]]
+  ↳ app/controllers/stocks_controller.rb:14
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/stocks_controller.rb:14
+Redirected to http://localhost:3000/stocks/4
+Completed 302 Found in 16ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/stocks/4" for ::1 at 2020-02-19 19:53:18 +0800
+Processing by StocksController#show as HTML
+  Parameters: {"id"=>"4"}
+  Rendering stocks/show.html.erb within layouts/application
+  Rendered stocks/show.html.erb within layouts/application (1.9ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for nil:NilClass):
+    4:   <tbody>
+    5:     <tr>
+    6:       <td>Product Name</td>
+    7:       <td id="stock--<%= @stock.id %>_product_id_name">
+    8:         <%= @stock.product_id.name %>
+    9:       </td>
+   10:     </tr>
+  
+app/views/stocks/show.html.erb:7:in `_app_views_stocks_show_html_erb__2482565818711231110_70326499590540'
+Started PUT "/__web_console/repl_sessions/d3934fd0668acd2f23ba945bf6575c38" for ::1 at 2020-02-19 19:53:24 +0800
+Started PUT "/__web_console/repl_sessions/d3934fd0668acd2f23ba945bf6575c38" for ::1 at 2020-02-19 19:53:31 +0800
+Started PUT "/__web_console/repl_sessions/d3934fd0668acd2f23ba945bf6575c38" for ::1 at 2020-02-19 19:53:34 +0800
+Started PUT "/__web_console/repl_sessions/d3934fd0668acd2f23ba945bf6575c38" for ::1 at 2020-02-19 19:53:36 +0800
+Started GET "/stocks/4" for ::1 at 2020-02-19 19:54:15 +0800
+Processing by StocksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/stocks_controller.rb:27
+  Rendering stocks/show.html.erb within layouts/application
+  Rendered stocks/show.html.erb within layouts/application (6.0ms)
+Completed 500 Internal Server Error in 53ms (ActiveRecord: 8.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for 3:Integer):
+     5:     <tr>
+     6:       <td>Product Name</td>
+     7:       <td id="stock--<%= @stock.id %>_product_id_name">
+     8:         <%= @stock.product_id.name %>
+     9:       </td>
+    10:     </tr>
+    11:     <tr>
+  
+app/views/stocks/show.html.erb:8:in `_app_views_stocks_show_html_erb__2482565818711231110_70326469075560'
+Started GET "/stocks/4" for ::1 at 2020-02-19 19:55:40 +0800
+Processing by StocksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/stocks_controller.rb:27
+  Rendering stocks/show.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/stocks/show.html.erb:8
+  Rendered stocks/show.html.erb within layouts/application (14.4ms)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for nil:NilClass):
+    16:     </tr>
+    17:     <tr>
+    18:       <td>Province</td>
+    19:       <td id="warehouse--<%= @warehouse.id %>_province">
+    20:         <%= @warehouse.province %>
+    21:       </td>
+    22:     </tr>
+  
+app/views/stocks/show.html.erb:19:in `_app_views_stocks_show_html_erb__2482565818711231110_70326488073520'
+Started GET "/stocks/4" for ::1 at 2020-02-19 19:55:51 +0800
+Processing by StocksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/stocks_controller.rb:27
+  Rendering stocks/show.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/stocks/show.html.erb:8
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/stocks/show.html.erb:19
+  Rendered stocks/show.html.erb within layouts/application (38.6ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.5ms)
+Completed 200 OK in 54ms (Views: 50.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/stocks/new" for ::1 at 2020-02-19 19:58:21 +0800
+Processing by StocksController#new as HTML
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Stock without an ID):
+  
+app/controllers/stocks_controller.rb:27:in `set_stock'
+Started GET "/stocks/new" for ::1 at 2020-02-19 19:58:34 +0800
+Processing by StocksController#new as HTML
+  Rendering stocks/new.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.3ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ app/views/stocks/_form.html.erb:4
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/stocks/_form.html.erb:7
+  Rendered stocks/_form.html.erb (117.4ms)
+  Rendered stocks/new.html.erb within layouts/application (119.7ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.4ms)
+Completed 200 OK in 140ms (Views: 129.2ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/stocks/new" for ::1 at 2020-02-19 20:00:37 +0800
+Processing by StocksController#new as HTML
+  Rendering stocks/new.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ app/views/stocks/_form.html.erb:4
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/stocks/_form.html.erb:7
+  Rendered stocks/_form.html.erb (6.7ms)
+  Rendered stocks/new.html.erb within layouts/application (8.2ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.4ms)
+Completed 200 OK in 18ms (Views: 15.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/stocks/new" for ::1 at 2020-02-19 20:02:11 +0800
+Processing by StocksController#new as HTML
+  Rendering stocks/new.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ app/views/stocks/_form.html.erb:4
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/stocks/_form.html.erb:7
+  Rendered stocks/_form.html.erb (20.7ms)
+  Rendered stocks/new.html.erb within layouts/application (22.0ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.6ms)
+Completed 200 OK in 79ms (Views: 62.7ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/orders" for ::1 at 2020-02-19 20:06:49 +0800
+Processing by OrdersController#index as HTML
+  Rendering orders/index.html.erb within layouts/application
+  Rendered orders/index.html.erb within layouts/application (0.6ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.7ms)
+Completed 200 OK in 56ms (Views: 47.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders" for ::1 at 2020-02-19 20:06:51 +0800
+Processing by OrdersController#index as HTML
+  Rendering orders/index.html.erb within layouts/application
+  Rendered orders/index.html.erb within layouts/application (0.8ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.7ms)
+Completed 200 OK in 18ms (Views: 15.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders" for ::1 at 2020-02-19 20:06:52 +0800
+Processing by OrdersController#index as HTML
+  Rendering orders/index.html.erb within layouts/application
+  Rendered orders/index.html.erb within layouts/application (0.6ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.4ms)
+Completed 200 OK in 13ms (Views: 10.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders" for ::1 at 2020-02-19 20:06:53 +0800
+Processing by OrdersController#index as HTML
+  Rendering orders/index.html.erb within layouts/application
+  Rendered orders/index.html.erb within layouts/application (0.4ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.9ms)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders" for ::1 at 2020-02-19 20:06:57 +0800
+Processing by OrdersController#index as HTML
+  Rendering orders/index.html.erb within layouts/application
+  Rendered orders/index.html.erb within layouts/application (0.9ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (1.8ms)
+Completed 200 OK in 27ms (Views: 25.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/new" for ::1 at 2020-02-19 20:06:59 +0800
+Processing by OrdersController#new as HTML
+Completed 406 Not Acceptable in 61ms (ActiveRecord: 4.4ms)
+
+
+  
+ActionController::UnknownFormat (OrdersController#new is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+actionpack (5.2.4.1) lib/action_controller/metal/implicit_render.rb:55:in `default_render'
+actionpack (5.2.4.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (5.2.4.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (5.2.4.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.4.1) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.4.1) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.4.1) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.4.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.4.1) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.4.1) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.4.1) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.4.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.4.1) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.4.1) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.4.1) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.4.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.4.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.4.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.4.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.4.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.4.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.4.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.4.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.1.2) lib/rack/tempfile_reaper.rb:17:in `call'
+rack (2.1.2) lib/rack/etag.rb:27:in `call'
+rack (2.1.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.1.2) lib/rack/head.rb:14:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.1.2) lib/rack/session/abstract/id.rb:269:in `context'
+rack (2.1.2) lib/rack/session/abstract/id.rb:263:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.4.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.4.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.2) lib/rack/method_override.rb:24:in `call'
+rack (2.1.2) lib/rack/runtime.rb:24:in `call'
+activesupport (5.2.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.1.2) lib/rack/sendfile.rb:113:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (5.2.4.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/orders/new" for ::1 at 2020-02-19 20:09:57 +0800
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (35.9ms)
+Completed 500 Internal Server Error in 83ms (ActiveRecord: 1.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `model_name' for #<Hash:0x00007fec501e0138>):
+    1: <%= form_for model: @order, remote: false do |f| %>
+    2:   <%= f.label :customer_name %>
+    3:   <%= f.text_field :customer_name %>
+    4:   <%= f.label :warehouse %>
+  
+app/views/orders/new.html.erb:1:in `_app_views_orders_new_html_erb__2131843777904421900_70326435758520'
+Started GET "/orders/new" for ::1 at 2020-02-19 20:10:08 +0800
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.3ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ app/views/orders/new.html.erb:6
+  Rendered orders/new.html.erb within layouts/application (17.5ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.6ms)
+Completed 200 OK in 30ms (Views: 27.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/orders/new" for ::1 at 2020-02-19 20:10:36 +0800
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.3ms)[0m  [1m[34mSELECT "warehouses".* FROM "warehouses"[0m
+  ↳ app/views/orders/new.html.erb:6
+  Rendered orders/new.html.erb within layouts/application (5.6ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (1.3ms)
+Completed 200 OK in 26ms (Views: 20.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/orders" for ::1 at 2020-02-19 20:10:48 +0800
+Processing by OrdersController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jZtCIxaCFna6oxqDHQ8VFY6SfKpvoX/CpIs/zQ4IOFeAN2l0/YRvkp8jcVUbz3VdVrfr/h1GPF/qVmI6CLqZ9w==", "order"=>{"customer_name"=>"Marc Dagatan", "warehouse_id"=>"5"}, "commit"=>"Save Order"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:18
+  [1m[36mOrder Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "orders" WHERE "orders"."uuid" = ? LIMIT ?[0m  [["uuid", "735537bf-51ea-46c2-90eb-712c66ba135d"], ["LIMIT", 1]]
+  ↳ app/models/order.rb:21
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:18
+  [1m[36mOrder Create (0.4ms)[0m  [1m[32mINSERT INTO "orders" ("warehouse_id", "customer_name", "uuid", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["warehouse_id", 5], ["customer_name", "Marc Dagatan"], ["uuid", "735537bf-51ea-46c2-90eb-712c66ba135d"], ["created_at", "2020-02-19 12:10:49.007208"], ["updated_at", "2020-02-19 12:10:49.007208"]]
+  ↳ app/controllers/orders_controller.rb:18
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/orders_controller.rb:18
+Redirected to http://localhost:3000/orders/1
+Completed 200 OK in 12ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/orders/1" for ::1 at 2020-02-19 20:10:49 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:28
+Completed 406 Not Acceptable in 66ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionController::UnknownFormat (OrdersController#show is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+actionpack (5.2.4.1) lib/action_controller/metal/implicit_render.rb:55:in `default_render'
+actionpack (5.2.4.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (5.2.4.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (5.2.4.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.4.1) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.4.1) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.4.1) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.4.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.4.1) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.4.1) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.4.1) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.4.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.4.1) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.4.1) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.4.1) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.4.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.4.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.4.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.4.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.4.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.4.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.4.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.4.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.1.2) lib/rack/tempfile_reaper.rb:17:in `call'
+rack (2.1.2) lib/rack/etag.rb:27:in `call'
+rack (2.1.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.1.2) lib/rack/head.rb:14:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.1.2) lib/rack/session/abstract/id.rb:269:in `context'
+rack (2.1.2) lib/rack/session/abstract/id.rb:263:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.4.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.4.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.2) lib/rack/method_override.rb:24:in `call'
+rack (2.1.2) lib/rack/runtime.rb:24:in `call'
+activesupport (5.2.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.1.2) lib/rack/sendfile.rb:113:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (5.2.4.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/orders/1" for ::1 at 2020-02-19 20:11:32 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:28
+  Rendering orders/show.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:2
+  Rendered orders/show.html.erb within layouts/application (2.8ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.6ms)
+Completed 200 OK in 17ms (Views: 14.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/orders/1" for ::1 at 2020-02-19 20:11:43 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:28
+  Rendering orders/show.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:3
+  Rendered orders/show.html.erb within layouts/application (2.6ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.7ms)
+Completed 200 OK in 22ms (Views: 18.7ms | ActiveRecord: 0.4ms)
+
+
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" ORDER BY "orders"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" ORDER BY "stocks"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/orders/1" for ::1 at 2020-02-19 20:26:32 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:31
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.0ms)
+
+
+  
+NoMethodError (undefined method `order_item' for #<Order:0x00007fec4db39160>
+Did you mean?  order_items
+               order_items=):
+  
+app/controllers/orders_controller.rb:14:in `show'
+Started GET "/orders/1" for ::1 at 2020-02-19 20:26:43 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:31
+  Rendering orders/show.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.6ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:3
+  Rendered orders/show.html.erb within layouts/application (17.8ms)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 2.5ms)
+
+
+  
+ActionView::Template::Error (Missing partial order_items/_form with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}. Searched in:
+  * "/Users/marcdagatan/Documents/FullstackBootcamp/apps/bootcamp-inventory/app/views"
+):
+    4: <hr />
+    5: 
+    6: <h4>Add a new order</h4>
+    7: <%= render "order_items/form", order_item: @order_item %>
+  
+app/views/orders/show.html.erb:7:in `_app_views_orders_show_html_erb___380961079269019032_70326485933600'
+Started GET "/orders/1" for ::1 at 2020-02-19 20:26:58 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:31
+  Rendering orders/show.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/marcdagatan/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/did_you_mean-1.3.0/lib/did_you_mean/core_ext/name_error.rb:8
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/marcdagatan/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/did_you_mean-1.3.0/lib/did_you_mean/core_ext/name_error.rb:8
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/marcdagatan/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/did_you_mean-1.3.0/lib/did_you_mean/core_ext/name_error.rb:8
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/marcdagatan/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/did_you_mean-1.3.0/lib/did_you_mean/core_ext/name_error.rb:8
+  Rendered order_items/_form.html.erb (168.9ms)
+  Rendered orders/show.html.erb within layouts/application (172.0ms)
+Completed 500 Internal Server Error in 181ms (ActiveRecord: 1.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `order_item_order_path' for #<#<Class:0x00007fec526cb470>:0x00007fec52b13640>
+Did you mean?  order_order_items_path):
+    1: <%= form_with model: order_item, remote: false, url: order_item_order_path(@order), method: :post do |f| %>
+    2:   <%= f.hidden_field :order_id %>
+    3:   <%= f.select :product_id, @products.map { |p| [p.name, p.id] } %>
+    4:   <%= f.label :quantity %>
+  
+app/views/order_items/_form.html.erb:1:in `_app_views_order_items__form_html_erb___3930930609729320242_70326467433800'
+app/views/orders/show.html.erb:7:in `_app_views_orders_show_html_erb___380961079269019032_70326488178620'
+Started GET "/orders/1" for ::1 at 2020-02-19 20:27:20 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:31
+  Rendering orders/show.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/order_items/_form.html.erb:3
+  Rendered order_items/_form.html.erb (23.6ms)
+  Rendered orders/show.html.erb within layouts/application (27.5ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.4ms)
+Completed 200 OK in 42ms (Views: 36.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/orders/1" for ::1 at 2020-02-19 20:29:02 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:31
+  Rendering orders/show.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/order_items/_form.html.erb:3
+  Rendered order_items/_form.html.erb (4.6ms)
+  [1m[36mOrderItem Load (0.2ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 1]]
+  ↳ app/views/orders/show.html.erb:10
+  Rendered orders/show.html.erb within layouts/application (15.9ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+     8: <hr />
+     9: 
+    10: <%= @order.order_items.each do |order_item| %>
+    11:   <%= order_item.product.name %> - (<%= order_item.quantity %>)
+    12:   <hr />
+    13: <% end %>
+  
+app/views/orders/show.html.erb:11:in `block in _app_views_orders_show_html_erb___380961079269019032_70326446500800'
+app/views/orders/show.html.erb:10:in `_app_views_orders_show_html_erb___380961079269019032_70326446500800'
+Started PUT "/__web_console/repl_sessions/16a71141f4b3c23a60e536c4f9b9c254" for ::1 at 2020-02-19 20:29:13 +0800
+Started PUT "/__web_console/repl_sessions/16a71141f4b3c23a60e536c4f9b9c254" for ::1 at 2020-02-19 20:29:15 +0800
+Started GET "/orders/1" for ::1 at 2020-02-19 20:30:04 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:32
+  Rendering orders/show.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:3
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/order_items/_form.html.erb:3
+  Rendered order_items/_form.html.erb (11.7ms)
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 1]]
+  ↳ app/views/orders/show.html.erb:10
+  Rendered orders/show.html.erb within layouts/application (35.2ms)
+Completed 500 Internal Server Error in 112ms (ActiveRecord: 4.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+     8: <hr />
+     9: 
+    10: <%= @order_items.each do |order_item| %>
+    11:   <%= order_item.product.name %> - (<%= order_item.quantity %>)
+    12:   <hr />
+    13: <% end %>
+  
+app/views/orders/show.html.erb:11:in `block in _app_views_orders_show_html_erb___380961079269019032_70326485467320'
+app/views/orders/show.html.erb:10:in `_app_views_orders_show_html_erb___380961079269019032_70326485467320'
+Started PUT "/__web_console/repl_sessions/3c60385cc8c2e42bef1ec6c18cf99e48" for ::1 at 2020-02-19 20:30:08 +0800
+Started PUT "/__web_console/repl_sessions/3c60385cc8c2e42bef1ec6c18cf99e48" for ::1 at 2020-02-19 20:30:09 +0800
+Started PUT "/__web_console/repl_sessions/3c60385cc8c2e42bef1ec6c18cf99e48" for ::1 at 2020-02-19 20:30:14 +0800
+Started PUT "/__web_console/repl_sessions/3c60385cc8c2e42bef1ec6c18cf99e48" for ::1 at 2020-02-19 20:30:15 +0800
+Started GET "/orders/1" for ::1 at 2020-02-19 20:30:31 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:32
+  Rendering orders/show.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.5ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:3
+  [1m[36mProduct Load (1.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/order_items/_form.html.erb:3
+  Rendered order_items/_form.html.erb (6.5ms)
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 1]]
+  ↳ app/views/orders/show.html.erb:10
+  Rendered orders/show.html.erb within layouts/application (12.9ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.6ms)
+Completed 200 OK in 29ms (Views: 23.2ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/orders/1" for ::1 at 2020-02-19 20:30:40 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:32
+  Rendering orders/show.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:3
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/order_items/_form.html.erb:3
+  Rendered order_items/_form.html.erb (2.6ms)
+  [1m[36mOrderItem Load (0.2ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 1]]
+  ↳ app/views/orders/show.html.erb:10
+  Rendered orders/show.html.erb within layouts/application (6.5ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (1.2ms)
+Completed 200 OK in 52ms (Views: 46.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/orders/1" for ::1 at 2020-02-19 20:30:49 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:31
+  Rendering orders/show.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.3ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/order_items/_form.html.erb:3
+  Rendered order_items/_form.html.erb (17.1ms)
+  Rendered orders/show.html.erb within layouts/application (49.6ms)
+Completed 500 Internal Server Error in 86ms (ActiveRecord: 4.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+     7: <%= render "order_items/form", order_item: @order_item %>
+     8: <hr />
+     9: 
+    10: <% @order_items.each do |order_item| %>
+    11:   <% next if order_item.new_record? %>
+    12: 
+    13:   <%= order_item.product.name %> - (<%= order_item.quantity %>)
+  
+app/views/orders/show.html.erb:10:in `_app_views_orders_show_html_erb___380961079269019032_70326484863560'
+Started GET "/orders/1" for ::1 at 2020-02-19 20:31:02 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.8ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:31
+  Rendering orders/show.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/order_items/_form.html.erb:3
+  Rendered order_items/_form.html.erb (5.2ms)
+  [1m[36mOrderItem Load (0.2ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 1]]
+  ↳ app/views/orders/show.html.erb:10
+  Rendered orders/show.html.erb within layouts/application (10.9ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.4ms)
+Completed 200 OK in 29ms (Views: 18.0ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/orders/1/order_items" for ::1 at 2020-02-19 20:31:05 +0800
+Processing by OrderItemsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ukx7q6M52RaejOttHyCr0Cwhn4f3/ITZg/gYv9vORntf4FD8SD+g8rsMgLsZ4MuY9AQI04Ubx0TNJUVI3Xzn2w==", "order_item"=>{"order_id"=>"1", "product_id"=>"1", "quantity"=>"2"}, "commit"=>"Add Order Item", "order_id"=>"1"}
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/order_items_controller.rb:15
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/order_items_controller.rb:7
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/order_items_controller.rb:7
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/order_items_controller.rb:7
+  [1m[36mOrderItem Create (0.6ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "order_id", "product_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 2], ["order_id", 1], ["product_id", 1], ["created_at", "2020-02-19 12:31:06.043793"], ["updated_at", "2020-02-19 12:31:06.043793"]]
+  ↳ app/controllers/order_items_controller.rb:7
+  [1m[35m (9.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/order_items_controller.rb:7
+Redirected to http://localhost:3000/orders/1
+Completed 200 OK in 34ms (ActiveRecord: 10.2ms)
+
+
+Started GET "/orders/1" for ::1 at 2020-02-19 20:31:06 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:31
+  Rendering orders/show.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:3
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/order_items/_form.html.erb:3
+  Rendered order_items/_form.html.erb (4.8ms)
+  [1m[36mOrderItem Load (1.3ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 1]]
+  ↳ app/views/orders/show.html.erb:10
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:13
+  Rendered orders/show.html.erb within layouts/application (14.8ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.6ms)
+Completed 200 OK in 34ms (Views: 25.0ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/orders/1/order_items" for ::1 at 2020-02-19 20:31:12 +0800
+Processing by OrderItemsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Reeuni+BsTY+INorMmafnu8dLFcpXoSmZt51aHoSQW3RNrnGIdBmmB67RjWPpnVmRY/LqH5rD8BWsBRQxLjR5Q==", "order_item"=>{"order_id"=>"1", "product_id"=>"4", "quantity"=>"10"}, "commit"=>"Add Order Item", "order_id"=>"1"}
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/order_items_controller.rb:15
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/order_items_controller.rb:7
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/order_items_controller.rb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/order_items_controller.rb:7
+  [1m[36mOrderItem Create (0.5ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "order_id", "product_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 10], ["order_id", 1], ["product_id", 4], ["created_at", "2020-02-19 12:31:12.894369"], ["updated_at", "2020-02-19 12:31:12.894369"]]
+  ↳ app/controllers/order_items_controller.rb:7
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/order_items_controller.rb:7
+Redirected to http://localhost:3000/orders/1
+Completed 200 OK in 16ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/orders/1" for ::1 at 2020-02-19 20:31:12 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:31
+  Rendering orders/show.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/order_items/_form.html.erb:3
+  Rendered order_items/_form.html.erb (3.4ms)
+  [1m[36mOrderItem Load (0.1ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 1]]
+  ↳ app/views/orders/show.html.erb:10
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:13
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:13
+  Rendered orders/show.html.erb within layouts/application (8.9ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.8ms)
+Completed 200 OK in 70ms (Views: 66.4ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/orders/1/order_items" for ::1 at 2020-02-19 20:31:29 +0800
+Processing by OrderItemsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Uw6B6qoHqAcaOQqibN1rbDSqrQxnKlCD+DxtWVDsnJbH35aypFZ/qTqilrzRHYGUnjhK8zAf2+XIUgxh7kYMHg==", "order_item"=>{"order_id"=>"1", "product_id"=>"1", "quantity"=>"25"}, "commit"=>"Add Order Item", "order_id"=>"1"}
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/order_items_controller.rb:15
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/order_items_controller.rb:7
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/order_items_controller.rb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/order_items_controller.rb:7
+  [1m[36mOrderItem Create (3.2ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "order_id", "product_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 25], ["order_id", 1], ["product_id", 1], ["created_at", "2020-02-19 12:31:29.088550"], ["updated_at", "2020-02-19 12:31:29.088550"]]
+  ↳ app/controllers/order_items_controller.rb:7
+  [1m[35m (8.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/order_items_controller.rb:7
+Redirected to http://localhost:3000/orders/1
+Completed 200 OK in 29ms (ActiveRecord: 12.0ms)
+
+
+Started GET "/orders/1" for ::1 at 2020-02-19 20:31:29 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:31
+  Rendering orders/show.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:3
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/order_items/_form.html.erb:3
+  Rendered order_items/_form.html.erb (6.9ms)
+  [1m[36mOrderItem Load (0.2ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 1]]
+  ↳ app/views/orders/show.html.erb:10
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:13
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:13
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:13
+  Rendered orders/show.html.erb within layouts/application (21.1ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.4ms)
+Completed 200 OK in 46ms (Views: 41.1ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/orders/1/order_items" for ::1 at 2020-02-19 20:32:00 +0800
+Processing by OrderItemsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"H1/3UUI0qA/0XJuc93g25QwW7vAVbevSadXN0eSaPwSLjuAJTGV/odTHB4JKuNwdpoQJD0JYYLRZu6zpWjCvjA==", "order_item"=>{"order_id"=>"1", "product_id"=>"2", "quantity"=>"25"}, "commit"=>"Add Order Item", "order_id"=>"1"}
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/order_items_controller.rb:15
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/order_items_controller.rb:7
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/order_items_controller.rb:7
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/order_items_controller.rb:7
+  [1m[36mOrderItem Create (1.6ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "order_id", "product_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 25], ["order_id", 1], ["product_id", 2], ["created_at", "2020-02-19 12:32:00.746602"], ["updated_at", "2020-02-19 12:32:00.746602"]]
+  ↳ app/controllers/order_items_controller.rb:7
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/order_items_controller.rb:7
+Redirected to http://localhost:3000/orders/1
+Completed 200 OK in 18ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/orders/1" for ::1 at 2020-02-19 20:32:00 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:31
+  Rendering orders/show.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:3
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/order_items/_form.html.erb:3
+  Rendered order_items/_form.html.erb (2.6ms)
+  [1m[36mOrderItem Load (0.1ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 1]]
+  ↳ app/views/orders/show.html.erb:10
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:13
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:13
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:13
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:13
+  Rendered orders/show.html.erb within layouts/application (16.3ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.7ms)
+Completed 200 OK in 45ms (Views: 39.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/orders/1" for ::1 at 2020-02-19 20:34:37 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:31
+  Rendering orders/show.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.2ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/order_items/_form.html.erb:3
+  Rendered order_items/_form.html.erb (3.3ms)
+  [1m[36mOrderItem Load (0.1ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 1]]
+  ↳ app/views/orders/show.html.erb:10
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:13
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:13
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:13
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:13
+  Rendered orders/show.html.erb within layouts/application (12.3ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.6ms)
+Completed 200 OK in 24ms (Views: 19.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/orders/1" for ::1 at 2020-02-19 20:37:32 +0800
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:31
+  Rendering orders/show.html.erb within layouts/application
+  [1m[36mWarehouse Load (0.1ms)[0m  [1m[34mSELECT  "warehouses".* FROM "warehouses" WHERE "warehouses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:3
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/order_items/_form.html.erb:3
+  Rendered order_items/_form.html.erb (2.7ms)
+  [1m[36mOrderItem Load (0.2ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 1]]
+  ↳ app/views/orders/show.html.erb:10
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:13
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:13
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:13
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/orders/show.html.erb:13
+  Rendered orders/show.html.erb within layouts/application (13.3ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_flash.html.erb (0.4ms)
+Completed 200 OK in 27ms (Views: 23.0ms | ActiveRecord: 1.2ms)
+
+

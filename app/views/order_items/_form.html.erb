@@ -1,0 +1,7 @@
+<%= form_with model: order_item, remote: false, url: order_order_items_path(order), method: :post do |f| %>
+  <%= f.hidden_field :order_id %>
+  <%= f.select :product_id, products.map { |p| [p.name, p.id] } %>
+  <%= f.label :quantity %>
+  <%= f.text_field :quantity %>
+  <%= f.submit "Add Order Item", class: "btn btn-primary" %>
+<% end %>

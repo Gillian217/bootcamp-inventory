@@ -1,0 +1,15 @@
+Cx: <%= @order.customer_name %>
+<br />
+Warehouse: <%= @order.warehouse.full_address %>
+<hr />
+
+<h4>Add a new order</h4>
+<%= render "order_items/form", order_item: @order_item, order: @order, products: @products %>
+<hr />
+
+<% @order.order_items.each do |order_item| %>
+  <% next if order_item.new_record? %>
+
+  <%= order_item.product.name %> - (<%= order_item.quantity %>)
+  <hr />
+<% end %>

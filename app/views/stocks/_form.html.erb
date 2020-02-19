@@ -1,18 +1,14 @@
-<%= form_with model: warehouse, local: true, id: "warehouse-form" do |f| %>
+<%= form_with model: stock, local: true, id: "warehouse-form" do |f| %>
   <div class="form-group">
-    <%= f.label :street %>
-    <%= f.text_field :street, class: "form-control" %>
-    <%= render_error(warehouse, :street) %>
+    <%= f.select :warehouse_id,
+                 @warehouses.all.map { |w| [w.full_address, w.id] } %>
   </div>
   <div class="form-group">
-    <%= f.label :city %>
-    <%= f.text_field :city, class: "form-control" %>
-    <%= render_error(warehouse, :city) %>
+    <%= f.select :product_id, @products.all.map { |p| [p.name, p.id] } %>
   </div>
   <div class="form-group">
-    <%= f.label :province %>
-    <%= f.text_field :province, class: "form-control" %>
-    <%= render_error(warehouse, :province) %>
+    <%= f.label :count %>
+    <%= f.text_field :count, class: "form-control" %>
   </div>
-  <%= f.submit "Save Warehouse", class: "btn btn-primary", id: "submit-button" %>
+  <%= f.submit "Save Stock", class: "btn btn-primary", id: "submit-button" %>
 <% end %>

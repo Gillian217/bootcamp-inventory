@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'Edit product page', type: :system do
-  it 'allows to edit a product' do
+RSpec.describe 'Edit warehouse page', type: :system do
+  it 'allows to edit a ra' do
     product = create(:product, name: 'Haier', sku: 'HTV-32-LED')
 
     visit "/products/#{product.id}/edit"
